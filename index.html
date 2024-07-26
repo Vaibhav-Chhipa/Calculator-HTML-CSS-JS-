@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            width: 350px;
+            height: 450px;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: 0 25px 60px -10px rgba(0,0,0,0.5);
+            overflow: hidden;
+        } 
+        input {
+            width: 100%;
+            height: 100%;
+            font-size: 25px;
+        }
+        button{
+            width: 100%;
+            height: 100%;
+            font-size: 25px;
+        }
+        .inP{
+            background: linear-gradient(135deg, #3a3a3a, #000000); color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <table border="0" cellspacing="0" cellpadding="0" id="calcu" style="width: 100%; height: 100%;">
+            <tr style="height: 100px;">
+                <td colspan="3">
+                    <input type="text" 
+                        style="width: 100%;text-align: right; font-size: 20px;height: 100%; padding-right: 10px;"
+                        id="result">
+                </td>
+                <td style="width: 80px; "><button class="inP" id="">C</button></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" id="btn" value="1" class="inP"  ></td>
+                <td><input type="button" value="2" class="inP"  ></td>
+                <td><input type="button" value="3" class="inP"  ></td>
+                <td><input type="button" value="/" class="inP"  ></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" class="inP"  ></td>
+                <td><input type="button" value="5" class="inP"  ></td>
+                <td><input type="button" value="6" class="inP"  ></td>
+                <td><input type="button" value="*" class="inP"  ></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" class="inP"  ></td>
+                <td><input type="button" value="8" class="inP"  ></td>
+                <td><input type="button" value="9" class="inP"></td>
+                <td><input type="button" value="-" class="inP"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" class="inP"  ></td>
+                <td><input type="button" value="," class="inP"  ></td>
+                <td><input type="button" value="=" class="inP"  
+                    style="background: linear-gradient(60deg, #ff0300, #ffa100); color: white;">
+                </td>
+                <td><input type="button" value="+" class="inP"  ></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let btne =  document.querySelectorAll(".inP")
+        for(let i of btne){
+            i.onclick = function(){
+                console.log(i.value)
+                console.log(i.innerText)
+                if(i.innerText == "C"){
+                    document.querySelector("#result").value=''
+                }
+                if(i.value == "="){
+                    let val = document.querySelector("#result").value;
+                    console.log(val)
+                    console.log(eval(val))
+                    document.querySelector("#result").value = eval(val)
+                }
+                else{
+                    document.querySelector("#result").value += i.value
+                }
+            
+            }
+        }
+    </script>
+</body>
+
+</html>
